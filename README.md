@@ -15,7 +15,7 @@ See `scripts` for samples. The samples create reachability maps for a Tiago++ mo
 
 - Reachability maps can be created by either sampling joint positions and using forward kinematics (recommended) or by sampling end-effector poses and computing inverse kinematics (much slower)
 - The script `invert_reachability_map.py` inverts the reachability map i.e. computes the inverse transform of all the end-effector poses
-- The base placement map can then be obtained by transforming the inverted map based on a given goal pose and slicing the map to intersect with the group (`create_base_placement_map_for_goal_pose.py`)
+- The base placement map can then be obtained by transforming the inverted map based on a given goal pose and slicing the map to intersect with the ground (`create_base_placement_map_for_goal_pose.py`)
 - For a detailed explanation on the computation of these maps, refer to Vahrenkamp et al. [2] (https://doi.org/10.1109/ICRA.2013.6630839)
 - For an alternative, learned base placement map technique, refer to Jauhri at al. [1] (https://doi.org/10.1109/LRA.2022.3188109)
 
