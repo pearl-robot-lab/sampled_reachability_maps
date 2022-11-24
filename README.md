@@ -14,10 +14,17 @@ Clone repository somewhere, then `pip3 install -e .` to install in editable mode
 See `scripts` for samples. The samples create reachability maps for a Tiago++ mobile manipulator.
 
 - Reachability maps can be created by either sampling joint positions and using forward kinematics (recommended) or by sampling end-effector poses and computing inverse kinematics (much slower)
+- The maps store two metrics for computing the reachability of every 6D voxel: 
+  1. The maximum *Manipulability* (Yoshikawa metric) among all the joint configurations sampled that lead to the end-effector occupying the 6D voxel. This is the default metric.
+  2. The number of joint configurations that lead to the end-effector occupying the 6D voxel (i.e. the no. of visitations of every 6D voxel).
 - The script `invert_reachability_map.py` inverts the reachability map i.e. computes the inverse transform of all the end-effector poses
 - The base placement map can then be obtained by transforming the inverted map based on a given goal pose and slicing the map to intersect with the ground (`create_base_placement_map_for_goal_pose.py`)
 - For a detailed explanation on the computation of these maps, refer to Vahrenkamp et al. [2] (https://doi.org/10.1109/ICRA.2013.6630839)
 - For an alternative, learned base placement map technique, refer to Jauhri at al. [1] (https://doi.org/10.1109/LRA.2022.3188109)
+
+## Visualization
+
+To visualize the generated reachability and base placement maps, use the ROS package: [reachability_map_visualizer](https://github.com/iROSA-lab/reachability_map_visualizer) ([github.com/iROSA-lab/reachability_map_visualizer](https://github.com/iROSA-lab/reachability_map_visualizer))
 
 ## Credits
 - `pytorch_kinematics/transforms` is extracted from [pytorch3d](https://github.com/facebookresearch/pytorch3d) with minor extensions.
